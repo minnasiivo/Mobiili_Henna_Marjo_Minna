@@ -12,13 +12,19 @@ class CallToApi {
   Future<WeatherModel> callWeatherAPi(bool current, String cityName) async {
     try {
       Position currentPosition = await getCurrentPosition();
-  
+
       if (current) {
         List<Placemark> placemarks = await placemarkFromCoordinates(
             currentPosition.latitude, currentPosition.longitude);
 
         Placemark place = placemarks[0];
         cityName = place.locality!;
+      } else {
+        List<Placemark> placemarks =
+            await placemarkFromCoordinates(51.5085, -0.1257);
+
+        Placemark place = placemarks[0];
+        cityName = "London";
       }
 
       var url = Uri.https('api.openweathermap.org', '/data/2.5/weather',
@@ -47,7 +53,6 @@ class CallToApi {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-
         return Future.error('Location permissions are denied');
       }
     }
