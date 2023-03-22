@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/constants/constants.dart';
@@ -110,6 +109,10 @@ class _WeatherPageState extends State<WeatherPage> {
                             Text(
                               "${data.temp}°C",
                               style: f42Rwhitebold,
+                            ),
+                            Text(
+                              data.icon,
+                              style: f24Rwhitebold,
                             ),
                           ],
                         ),
