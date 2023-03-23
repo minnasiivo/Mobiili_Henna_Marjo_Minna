@@ -90,7 +90,8 @@ class _WeatherPageState extends State<WeatherPage> {
                           FocusScope.of(context).unfocus();
                           textController.clear();
                         },
-                        style: f14RblackLetterSpacing2, onSubmitted: (String ) {  },
+                        style: f14RblackLetterSpacing2,
+                        onSubmitted: (String text) {},
                       ),
                       Expanded(
                         child: Column(
@@ -110,9 +111,10 @@ class _WeatherPageState extends State<WeatherPage> {
                               "${data.temp}°C",
                               style: f42Rwhitebold,
                             ),
-                            Text(
-                              data.icon,
-                              style: f24Rwhitebold,
+                            Image.network(
+                              'https://openweathermap.org/img/wn/' +
+                                  data.icon +
+                                  '@2x.png',
                             ),
                           ],
                         ),

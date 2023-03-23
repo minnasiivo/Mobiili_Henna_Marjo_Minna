@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
 
 class WeatherModel {
   final String temp;
@@ -6,12 +6,9 @@ class WeatherModel {
   final String desc;
   final String icon;
 
-  WeatherModel.fromMap(Map<String, dynamic> json)
+  WeatherModel.fromMap(Map<String, dynamic> json, {required String})
       : temp = json['main']['temp'].toString(),
         city = json['name'],
         desc = json['weather'][0]['description'],
-        icon = json['weather'] [3] ['icon'];
-        
-        
-
+        icon = json['weather'][0]['icon'];
 }

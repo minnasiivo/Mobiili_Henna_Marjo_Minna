@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import "package:http/http.dart" as http;
@@ -17,24 +17,22 @@ class CallToApi {
       if (current) {
         List<Placemark> placemarks = await placemarkFromCoordinates(
             currentPosition.latitude, currentPosition.longitude);
+        //  61.0587,
+        //28.1887);
 
         Placemark place = placemarks[0];
+        //cityName = 'london'; --> löysi säätiedot logi tulostukseen, mutta heittää errorin
         cityName = place.locality!;
-      } else {
-        List<Placemark> placemarks =
-            await placemarkFromCoordinates(51.5085, -0.1257);
-
-        Placemark place = placemarks[0];
-        cityName = "London";
       }
 
       var url = Uri.https('api.openweathermap.org', '/data/2.5/weather',
           {'q': cityName, "units": "metric", "appid": apiKey});
       final http.Response response = await http.get(url);
       log(response.body.toString());
+      log("*********TESTAAN TOIMIIKO ********************");
       if (response.statusCode == 200) {
         final Map<String, dynamic> decodedJson = json.decode(response.body);
-        return WeatherModel.fromMap(decodedJson);
+        return WeatherModel.fromMap(decodedJson, String: null);
       } else {
         throw Exception('Failed to load weather data');
       }
