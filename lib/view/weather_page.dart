@@ -5,6 +5,8 @@ import 'package:weather_app/constants/constants.dart';
 import 'package:weather_app/logic/models/weather_model.dart';
 import 'package:weather_app/logic/services/call_to_api.dart';
 
+import 'input_view.dart';
+
 class WeatherPage extends StatefulWidget {
   const WeatherPage({Key? key}) : super(key: key);
 
@@ -115,6 +117,19 @@ class _WeatherPageState extends State<WeatherPage> {
                               'https://openweathermap.org/img/wn/' +
                                   data.icon +
                                   '@2x.png',
+                            ),
+                            Center(
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const InputView()),
+                                    );
+                                  },
+                                  child:
+                                      const Text("Tallenna sääpäiväkirjaan")),
                             ),
                           ],
                         ),
