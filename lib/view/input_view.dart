@@ -34,7 +34,7 @@ class InputViewState extends State<InputView> {
         child: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
                 // The validator receives the text that the user has entered.

@@ -99,9 +99,17 @@ class _WeatherPageState extends State<WeatherPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              data.city,
-                              style: f24Rwhitebold,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  data.city,
+                                  style: f24Rwhitebold,
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.heart_broken_sharp))
+                              ],
                             ),
                             height25,
                             Text(
