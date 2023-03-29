@@ -124,8 +124,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              const InputView()),
+                                          builder: (context) => InputView()),
                                     );
                                   },
                                   child:
