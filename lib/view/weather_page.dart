@@ -10,6 +10,8 @@ import 'input_view.dart';
 class WeatherPage extends StatefulWidget {
   const WeatherPage({Key? key}) : super(key: key);
 
+  
+
   @override
   State<WeatherPage> createState() => _WeatherPageState();
 }
@@ -18,6 +20,8 @@ class _WeatherPageState extends State<WeatherPage> {
   Future<WeatherModel> getData(bool isCurrentCity, String cityName) async {
     return await CallToApi().callWeatherAPi(isCurrentCity, cityName);
   }
+
+  bool isFavourite = false;
 
   TextEditingController textController = TextEditingController(text: "");
   Future<WeatherModel>? _myData;
@@ -107,8 +111,15 @@ class _WeatherPageState extends State<WeatherPage> {
                                   style: f24Rwhitebold,
                                 ),
                                 IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.heart_broken_sharp))
+                                    onPressed: () {
+                                      setState(() {
+                                        isFavourite = !isFavourite;
+                                      });
+                                    },
+                                    icon: Icon(Icons.heart_broken_sharp,
+                                      color: isFavourite
+                                        ? Colors.red
+                                        : const Color.fromARGB(255, 114, 113, 113),))
                               ],
                             ),
                             height25,
