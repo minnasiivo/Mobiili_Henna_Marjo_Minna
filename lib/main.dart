@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Weather_app',
+      title: 'Sääsovellus',
       
       debugShowCheckedModeBanner: false, //Debug-bannerin piilotus
       theme: ThemeData(
