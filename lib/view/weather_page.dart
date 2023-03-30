@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/constants/constants.dart';
 import 'package:weather_app/logic/models/weather_model.dart';
 import 'package:weather_app/logic/services/call_to_api.dart';
+import 'package:camera/camera.dart';
 
+import '../camera_page.dart';
 import 'input_view.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -22,6 +24,8 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
   bool isFavourite = false;
+  DateTime now = DateTime.now();
+  
 
   TextEditingController textController = TextEditingController(text: "");
   Future<WeatherModel>? _myData;
@@ -104,9 +108,14 @@ class _WeatherPageState extends State<WeatherPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Text(
+                                (now.day.toString()+". "+now.month.toString()+". "+now.year.toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
+                                style: f16PW,
+                                ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                
                                 Text(
                                   data.city+", ",
                                   style: f24Rwhitebold,
@@ -134,7 +143,7 @@ class _WeatherPageState extends State<WeatherPage> {
                             ),
                             height25,
                             Text(
-                              "${data.temp}°C",
+                              "${data.temp} °C",
                               style: f42Rwhitebold,
                             ),
                             Image.network(
@@ -152,8 +161,13 @@ class _WeatherPageState extends State<WeatherPage> {
                                     );
                                   },
                                   child:
-                                      const Text("Tallenna sääpäiväkirjaan")),
-                            ),
+                                      const Text("Save to Weather Diary")),
+                            ), ElevatedButton(onPressed: () async {
+                              await availableCameras().then((value) => Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => CameraPage(cameras: value))));
+
+                            }, child: Text("KAMERA"),
+                            )
                           ],
                         ),
                       ),
