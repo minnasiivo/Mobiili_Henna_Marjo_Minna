@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather_app',
-      // to hide debug banner
-      debugShowCheckedModeBanner: false,
+      
+      debugShowCheckedModeBanner: false, //Debug-bannerin piilotus
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.amber, //color: Color(0xffffb56b) MIKSI EI TOIMI?
       ),
       home: WeatherPage(),
     );
