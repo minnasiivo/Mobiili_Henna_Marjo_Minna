@@ -37,7 +37,12 @@ class CallToApi {
         throw Exception('Failed to load weather data');
       }
     } catch (e) {
-      throw Exception('Failed to load weather data');
+      //throw Exception('Failed to load weather data');
+      return Future.error('Unable to get location');
+      //cityName = 'london';
+      //current = true;
+      //throw const CityNotFoundException();
+      
     }
   }
 
@@ -66,3 +71,9 @@ class CallToApi {
     );
   }
 }
+
+class CityNotFoundException implements Exception {
+    const CityNotFoundException() : super();
+
+}
+

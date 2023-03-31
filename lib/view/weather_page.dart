@@ -48,12 +48,72 @@ class _WeatherPageState extends State<WeatherPage> {
           if (snapshot.connectionState == ConnectionState.done) {
             // If error occured
             if (snapshot.hasError) {
-              return Center(
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment(0.8, 1),
+                    colors: <Color>[
+                      Color.fromARGB(255, 135, 35, 135), //255, 65, 89, 224
+                      Color.fromARGB(255, 140, 30, 131), //255, 83, 92, 215
+                      Color.fromARGB(255, 155, 33, 104), //255, 86, 88, 177
+                      Color.fromARGB(255, 59, 74, 205), //255, 243, 144, 96
+                      Color.fromARGB(255, 153, 94, 255), //255, 255, 181, 107
+                    ],
+                    tileMode: TileMode.mirror,
+                  ),
+                ),
+                width: double.infinity,
+                height: double.infinity,
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      AnimSearchBar( //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
+                        rtl: true,
+                        width: 400,
+                        color: Colors.amber, //255, 255, 181, 107
+                        textController: textController,
+                        suffixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                          size: 26,
+                        ),
+                        onSuffixTap: () async {
+                          textController.text == ""
+                              ? log("No city entered")
+                              : setState(() {
+                                  _myData = getData(false, textController.text);
+                                });
+
+                          FocusScope.of(context).unfocus();
+                          textController.clear();
+                        },
+                        style: f14RblackLetterSpacing2,
+                        onSubmitted: (String text) {},
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                                (now.day.toString()+". "+now.month.toString()+". "+now.year.toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
+                                style: f16PW,
+                                ),
+                          ],
+                        ),
+                        ),
+                          ],
+                        ),
+                        ),
+
+                                );
+              /*return Center(
                 child: Text(
                   '${snapshot.error.toString()} occurred',
                   style: TextStyle(fontSize: 18),
                 ),
-              );
+              ); */
 
               // if data has no errors
             } else if (snapshot.hasData) {
@@ -70,8 +130,8 @@ class _WeatherPageState extends State<WeatherPage> {
                       Color.fromARGB(255, 135, 35, 135), //255, 65, 89, 224
                       Color.fromARGB(255, 140, 30, 131), //255, 83, 92, 215
                       Color.fromARGB(255, 155, 33, 104), //255, 86, 88, 177
-                      Color.fromARGB(255, 243, 144, 96), //255, 243, 144, 96
-                      Color.fromARGB(255, 255, 181, 107), //255, 255, 181, 107
+                      Color.fromARGB(255, 59, 74, 205), //255, 243, 144, 96
+                      Color.fromARGB(255, 153, 94, 255), //255, 255, 181, 107
                     ],
                     tileMode: TileMode.mirror,
                   ),
@@ -166,7 +226,7 @@ class _WeatherPageState extends State<WeatherPage> {
                               await availableCameras().then((value) => Navigator.push(context,
                               MaterialPageRoute(builder: (_) => CameraPage(cameras: value))));
 
-                            }, child: Text("KAMERA"),
+                            }, child: Text("Take a picture"),
                             )
                           ],
                         ),
