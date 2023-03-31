@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
     var providers = [EmailAuthProvider()];
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, //debug banneri pois näkyvistä
+      theme: ThemeData(primarySwatch: Colors.amber),
       initialRoute:
           FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/mainpage',
       routes: {
