@@ -12,14 +12,15 @@ import 'input_view.dart';
 class WeatherPage extends StatefulWidget {
   const WeatherPage({Key? key}) : super(key: key);
 
-  
 
   @override
   State<WeatherPage> createState() => _WeatherPageState();
 }
 
 class _WeatherPageState extends State<WeatherPage> {
+
   Future<WeatherModel> getData(bool isCurrentCity, String cityName) async {
+    log("TESTATAAN MISSÄ MENEE PIELEEN!=!?!!?!?!?!??!!?");
     return await CallToApi().callWeatherAPi(isCurrentCity, cityName);
   }
 
@@ -96,10 +97,10 @@ class _WeatherPageState extends State<WeatherPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                                (now.day.toString()+". "+now.month.toString()+". "+now.year.toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
-                                style: f16PW,
-                                ),
+                                Text(
+                                'City not found', //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
+                                style: f24Rwhitebold,
+                                )
                           ],
                         ),
                         ),
