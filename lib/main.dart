@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
-import 'package:weather_app/view/weather_page.dart';
+
 import 'firebase_options.dart';
 
 Future<void> main() async {

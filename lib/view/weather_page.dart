@@ -12,8 +12,6 @@ import 'input_view.dart';
 class WeatherPage extends StatefulWidget {
   const WeatherPage({Key? key}) : super(key: key);
 
-  
-
   @override
   State<WeatherPage> createState() => _WeatherPageState();
 }
@@ -25,7 +23,6 @@ class _WeatherPageState extends State<WeatherPage> {
 
   bool isFavourite = false;
   DateTime now = DateTime.now();
-  
 
   TextEditingController textController = TextEditingController(text: "");
   Future<WeatherModel>? _myData;
@@ -69,7 +66,8 @@ class _WeatherPageState extends State<WeatherPage> {
                 child: SafeArea(
                   child: Column(
                     children: [
-                      AnimSearchBar( //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
+                      AnimSearchBar(
+                        //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
                         rtl: true,
                         width: 400,
                         color: Colors.amber, //255, 255, 181, 107
@@ -97,17 +95,21 @@ class _WeatherPageState extends State<WeatherPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                                (now.day.toString()+". "+now.month.toString()+". "+now.year.toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
-                                style: f16PW,
-                                ),
+                              (now.day.toString() +
+                                  ". " +
+                                  now.month.toString() +
+                                  ". " +
+                                  now.year
+                                      .toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
+                              style: f16PW,
+                            ),
                           ],
                         ),
-                        ),
-                          ],
-                        ),
-                        ),
-
-                                );
+                      ),
+                    ],
+                  ),
+                ),
+              );
               /*return Center(
                 child: Text(
                   '${snapshot.error.toString()} occurred',
@@ -119,7 +121,7 @@ class _WeatherPageState extends State<WeatherPage> {
             } else if (snapshot.hasData) {
               // Extracting data from snapshot object
               final data = snapshot.data as WeatherModel;
-              
+
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: const BoxDecoration(
@@ -141,7 +143,8 @@ class _WeatherPageState extends State<WeatherPage> {
                 child: SafeArea(
                   child: Column(
                     children: [
-                      AnimSearchBar( //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
+                      AnimSearchBar(
+                        //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
                         rtl: true,
                         width: 400,
                         color: Colors.amber, //255, 255, 181, 107
@@ -169,18 +172,22 @@ class _WeatherPageState extends State<WeatherPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                                (now.day.toString()+". "+now.month.toString()+". "+now.year.toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
-                                style: f16PW,
-                                ),
+                              (now.day.toString() +
+                                  ". " +
+                                  now.month.toString() +
+                                  ". " +
+                                  now.year
+                                      .toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
+                              style: f16PW,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                
                                 Text(
-                                  data.city+", ",
+                                  data.city + ", ",
                                   style: f24Rwhitebold,
                                 ),
-                                 Text(
+                                Text(
                                   data.country,
                                   style: f24Rwhitebold,
                                 ),
@@ -189,11 +196,20 @@ class _WeatherPageState extends State<WeatherPage> {
                                       setState(() {
                                         isFavourite = !isFavourite;
                                       });
+                                      if (isFavourite) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    'Tallennettu suosikkeihin')));
+                                      }
                                     },
-                                    icon: Icon(Icons.favorite,
+                                    icon: Icon(
+                                      Icons.favorite,
                                       color: isFavourite
-                                        ? Color.fromARGB(255, 210, 10, 10) //255, 243, 144, 96
-                                        : Color.fromARGB(255, 104, 104, 104),)) //255, 114, 113, 113
+                                          ? Color.fromARGB(255, 210, 10,
+                                              10) //255, 243, 144, 96
+                                          : Color.fromARGB(255, 104, 104, 104),
+                                    )) //255, 114, 113, 113
                               ],
                             ),
                             height25,
@@ -220,13 +236,18 @@ class _WeatherPageState extends State<WeatherPage> {
                                           builder: (context) => InputView()),
                                     );
                                   },
-                                  child:
-                                      const Text("Save to Weather Diary")),
-                            ), ElevatedButton(onPressed: () async {
-                              await availableCameras().then((value) => Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => CameraPage(cameras: value))));
-
-                            }, child: Text("Take a picture"),
+                                  child: const Text("Save to Weather Diary")),
+                            ),
+                            ElevatedButton(
+                              onPressed: () async {
+                                await availableCameras().then((value) =>
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                CameraPage(cameras: value))));
+                              },
+                              child: Text("Take a picture"),
                             )
                           ],
                         ),
