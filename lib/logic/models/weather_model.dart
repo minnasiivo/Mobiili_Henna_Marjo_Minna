@@ -17,11 +17,21 @@ class WeatherModel {
     required this.icon,
   });
 
-  WeatherModel.fromMap(Map<String, dynamic> json, {required String})
+  Map<String, dynamic> toMap() {
+    return {
+      'temp': temp,
+      'city': city,
+      'country': country,
+      'desc': desc,
+      'icon': icon,
+    };
+  }
+
+  WeatherModel.fromMap(Map<String, dynamic> json, {required dynamic String})
       : temp = json['main']['temp']
             .toString(), //Miten saa yhden desimaalin tarkkuudella?
         city = json['name'],
         country = json['sys']['country'],
-        desc = json['weather'][0]['description'],
+        desc = json['weather'][0]['desc'],
         icon = json['weather'][0]['icon'];
 }

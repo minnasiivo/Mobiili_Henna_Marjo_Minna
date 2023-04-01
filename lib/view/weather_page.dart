@@ -18,6 +18,7 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   Future<WeatherModel> getData(bool isCurrentCity, String cityName) async {
+    log("TESTATAAN MISSÄ MENEE PIELEEN!=!?!!?!?!?!??!!?");
     return await CallToApi().callWeatherAPi(isCurrentCity, cityName);
   }
 
@@ -95,14 +96,9 @@ class _WeatherPageState extends State<WeatherPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              (now.day.toString() +
-                                  ". " +
-                                  now.month.toString() +
-                                  ". " +
-                                  now.year
-                                      .toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
-                              style: f16PW,
-                            ),
+                              'City not found', //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
+                              style: f24Rwhitebold,
+                            )
                           ],
                         ),
                       ),
