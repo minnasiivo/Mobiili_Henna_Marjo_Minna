@@ -23,6 +23,10 @@ class CallToApi {
         Placemark place = placemarks[0];
         //cityName = 'london'; --> löysi säätiedot logi tulostukseen, mutta heittää errorin
         cityName = place.locality!;
+        log("testaan tässä jotakin" +
+            currentPosition.toString() +
+            "cityname:" +
+            cityName);
       }
 
       var url = Uri.https('api.openweathermap.org', '/data/2.5/weather',
@@ -32,17 +36,18 @@ class CallToApi {
       log("*********TESTAAN TOIMIIKO ********************");
       if (response.statusCode == 200) {
         final Map<String, dynamic> decodedJson = json.decode(response.body);
-        return WeatherModel.fromMap(decodedJson, String: null);
+        return WeatherModel.fromMap(decodedJson, string: null);
       } else {
         throw Exception('Failed to load weather data');
       }
     } catch (e) {
+      log("PRLK TÄNNE JÄÄDÄÄN JUMIIN");
+
       //throw Exception('Failed to load weather data');
       return Future.error('Unable to get location');
       //cityName = 'london';
       //current = true;
       //throw const CityNotFoundException();
-      
     }
   }
 
@@ -73,7 +78,5 @@ class CallToApi {
 }
 
 class CityNotFoundException implements Exception {
-    const CityNotFoundException() : super();
-
+  const CityNotFoundException(); //: super();
 }
-

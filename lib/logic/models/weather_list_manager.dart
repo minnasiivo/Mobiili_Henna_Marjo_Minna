@@ -8,7 +8,7 @@ class WeatherListManager extends ChangeNotifier {
   /// Internal, private state of the cart.
   final List<WeatherModel> _items = [];
 
-  WeatherListManager() {}
+  WeatherListManager();
 
   Future<void> init() async {
     loadFromdb();

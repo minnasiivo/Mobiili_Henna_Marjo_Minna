@@ -45,6 +45,7 @@ dependencies:
   camera: ^0.10.3+2
   firebase_auth: ^4.2.2
   flutterfire_ui: ^0.4.3+20
+  firebase_core: ^2.8.0
   firebase_ui_auth: ^1.2.0
   sqflite: ^2.2.6
   path_provider: ^2.0.14

@@ -1,12 +1,14 @@
 //import 'package:flutter/material.dart';
 
+import 'dart:developer';
+
 class WeatherModel {
-  int id = -1;
   String temp;
   String city;
   String country;
   String desc;
   String icon;
+  int id = -1;
 
   WeatherModel({
     this.id = -1,
@@ -17,21 +19,21 @@ class WeatherModel {
     required this.icon,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'temp': temp,
-      'city': city,
-      'country': country,
-      'desc': desc,
-      'icon': icon,
-    };
-  }
-
-  WeatherModel.fromMap(Map<String, dynamic> json, {required dynamic String})
+  WeatherModel.fromMap(Map<String, dynamic> json, {required dynamic string})
       : temp = json['main']['temp']
             .toString(), //Miten saa yhden desimaalin tarkkuudella?
         city = json['name'],
         country = json['sys']['country'],
-        desc = json['weather'][0]['desc'],
+        desc = json['weather'][0]['description'],
         icon = json['weather'][0]['icon'];
+
+  Map<String, dynamic> toMap() {
+    return {
+      'temp': this.temp,
+      'city': this.city,
+      'country': this.country,
+      'desc': this.desc,
+      'icon': this.icon,
+    };
+  }
 }

@@ -13,7 +13,7 @@ class DatabaseHelper {
   static const columnId = "id";
   static const columnTemp = "temp";
   static const columnCity = "city";
-  static const columnCountry ='country';
+  static const columnCountry = 'country';
   static const columnDesc = "desc";
   static const columnIcon = "icon";
 
@@ -23,7 +23,7 @@ class DatabaseHelper {
     final documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, _databaseName);
 
-    //deleteDatabase(path); //Tämä kommenttiin, kun ei haluta tuhota
+    // deleteDatabase(path); //Tämä kommenttiin, kun ei haluta tuhota
 
     _db = await openDatabase(
       path,
@@ -63,23 +63,19 @@ class DatabaseHelper {
     });
   }
 
-  Future<int> update (WeatherModel item) async {
+  Future<int> update(WeatherModel item) async {
     return await _db.update(
       table,
       item.toMap(),
-      where: '$columnId = ?', 
+      where: '$columnId = ?',
       whereArgs: [item.id],
     );
   }
 
-  Future <int> delete(int id) async {
-    return await _db.delete(
-      table,
-      where: '$columnId = ?',
-      whereArgs: [id]
-    );
+  Future<int> delete(int id) async {
+    return await _db.delete(table, where: '$columnId = ?', whereArgs: [id]);
   }
 
   Future<void> deleteDatabase(String path) =>
-  databaseFactory.deleteDatabase(path);
+      databaseFactory.deleteDatabase(path);
 }
