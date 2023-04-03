@@ -9,6 +9,7 @@ class WeatherModel {
   String desc;
   String icon;
   int id = -1;
+  String? fbid;
 
   WeatherModel({
     this.id = -1,
@@ -36,4 +37,19 @@ class WeatherModel {
       'icon': this.icon,
     };
   }
+
+  WeatherModel.fromJson(Map<dynamic, dynamic> json)
+      : temp = json['temp'] as String,
+        city = json['city'] as String,
+        country = json['country'] as String,
+        desc = json['desc'] as String,
+        icon = json['icon'] as String;
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'temp': temp,
+        'city': city,
+        'country': country,
+        'desc': desc,
+        'icon': icon
+      };
 }

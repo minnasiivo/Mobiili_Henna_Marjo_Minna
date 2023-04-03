@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "457997102091",
+    "firebase_url": "https://weatherapp-7c11d-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "weatherapp-7c11d",
     "storage_bucket": "weatherapp-7c11d.appspot.com"
   },

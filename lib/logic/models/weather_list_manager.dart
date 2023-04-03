@@ -4,14 +4,18 @@ import 'package:flutter/foundation.dart';
 import 'package:weather_app/globals.dart';
 import 'package:weather_app/logic/models/weather_model.dart';
 
+import '../../data/firebase_helper.dart';
+
 class WeatherListManager extends ChangeNotifier {
   /// Internal, private state of the cart.
   final List<WeatherModel> _items = [];
+  final fbHelper = FirebaseHelper();
 
   WeatherListManager();
 
   Future<void> init() async {
-    loadFromdb();
+    // loadFromdb();
+    loadFromFirebase();
   }
 
   /// An unmodifiable view of the items in the cart.
@@ -22,7 +26,10 @@ class WeatherListManager extends ChangeNotifier {
   void add(WeatherModel item) {
     log("Lisää uusi item");
     _items.add(item);
-    dbHelper.insert(item);
+
+    fbHelper.saveWeather(item);
+
+    //  dbHelper.insert(item);
     // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();
   }
@@ -58,6 +65,14 @@ class WeatherListManager extends ChangeNotifier {
 
   void loadFromdb() async {
     final list = await dbHelper.queryAllRows();
+    for (WeatherModel item in list) {
+      _items.add(item);
+    }
+    notifyListeners();
+  }
+
+  loadFromFirebase() async {
+    final list = await fbHelper.getData();
     for (WeatherModel item in list) {
       _items.add(item);
     }
