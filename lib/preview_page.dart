@@ -10,7 +10,7 @@ class PreviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Preview Page')),
+      appBar: AppBar(title: const Text('Preview Picture')),
       body: Center(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Image.file(File(picture.path), fit: BoxFit.cover, width: 250),

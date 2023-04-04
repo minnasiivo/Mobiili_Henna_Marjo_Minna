@@ -10,6 +10,7 @@ class WeatherModel {
   String icon;
   int id = -1;
   String? fbid;
+  DateTime date = DateTime.now();
 
   WeatherModel({
     this.id = -1,
@@ -18,6 +19,7 @@ class WeatherModel {
     required this.country,
     required this.desc,
     required this.icon,
+    required this.date,
   });
 
   WeatherModel.fromMap(Map<String, dynamic> json, {required dynamic string})
@@ -27,6 +29,8 @@ class WeatherModel {
         country = json['sys']['country'],
         desc = json['weather'][0]['description'],
         icon = json['weather'][0]['icon'];
+        
+
 
   Map<String, dynamic> toMap() {
     return {
@@ -35,6 +39,7 @@ class WeatherModel {
       'country': this.country,
       'desc': this.desc,
       'icon': this.icon,
+      'date': date.millisecondsSinceEpoch,
     };
   }
 
@@ -44,12 +49,15 @@ class WeatherModel {
         country = json['country'] as String,
         desc = json['desc'] as String,
         icon = json['icon'] as String;
+        //date = json['date'] as DateTime;
+        
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         'temp': temp,
         'city': city,
         'country': country,
         'desc': desc,
-        'icon': icon
+        'icon': icon,
+        'date' : date,
       };
 }

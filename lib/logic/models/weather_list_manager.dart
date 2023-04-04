@@ -24,7 +24,7 @@ class WeatherListManager extends ChangeNotifier {
   /// Adds [item] to cart. This and [removeAll] are the only ways to modify the
   /// cart from the outside.
   void add(WeatherModel item) {
-    log("Lisää uusi item");
+    log("Add a new item");
     _items.add(item);
 
     fbHelper.saveWeather(item);
@@ -59,6 +59,7 @@ class WeatherListManager extends ChangeNotifier {
 
   void deleteItem(WeatherModel item) {
     dbHelper.delete(item.id);
+    fbHelper.DeleteItem(item);
     _items.remove(item);
     notifyListeners();
   }

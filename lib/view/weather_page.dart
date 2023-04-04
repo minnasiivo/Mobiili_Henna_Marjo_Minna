@@ -205,12 +205,13 @@ class _WeatherPageState extends State<WeatherPage> {
                                               city: data.city,
                                               country: data.country,
                                               desc: data.desc,
-                                              icon: data.icon));
+                                              icon: data.icon,
+                                              date: data.date));
 
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
                                                   content: Text(
-                                                      'Tallennettu suosikkeihin')));
+                                                      'Saved')));
                                         }
                                       },
                                       icon: Icon(
@@ -249,7 +250,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                     },
                                     child: const Text("To My Weather Diary")),
                               ),
-                              ElevatedButton(
+                              /*ElevatedButton(
                                 onPressed: () async {
                                   await availableCameras().then((value) =>
                                       Navigator.push(
@@ -259,7 +260,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                                   CameraPage(cameras: value))));
                                 },
                                 child: Text("Take a picture"),
-                              )
+                              )*/
                             ],
                           ),
                         ),

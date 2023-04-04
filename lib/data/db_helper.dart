@@ -16,6 +16,7 @@ class DatabaseHelper {
   static const columnCountry = 'country';
   static const columnDesc = "desc";
   static const columnIcon = "icon";
+  static const columnDate = "date";
 
   late Database _db;
 
@@ -40,7 +41,8 @@ class DatabaseHelper {
             $columnCity TEXT NOT NULL,
             $columnCountry TEXT NOT NULL,
             $columnDesc TEXT,
-            $columnIcon TEXT NOT NULL
+            $columnIcon TEXT NOT NULL,
+            $columnDate TEXT,
             )''');
   }
 
@@ -59,6 +61,7 @@ class DatabaseHelper {
         country: maps[i]['country'],
         desc: maps[i]['desc'],
         icon: maps[i]['icon'],
+        date: maps[i]['date'],
       );
     });
   }
