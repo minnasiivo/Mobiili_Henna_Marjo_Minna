@@ -64,6 +64,7 @@ class WeatherListManager extends ChangeNotifier {
     notifyListeners();
   }
 
+/*
   void loadFromdb() async {
     final list = await dbHelper.queryAllRows();
     for (WeatherModel item in list) {
@@ -71,6 +72,7 @@ class WeatherListManager extends ChangeNotifier {
     }
     notifyListeners();
   }
+*/
 
   loadFromFirebase() async {
     final list = await fbHelper.getData();

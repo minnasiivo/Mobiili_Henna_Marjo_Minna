@@ -47,6 +47,7 @@ class InputViewState extends State<InputView> {
               listManager.items[index].country,
               listManager.items[index].desc,
               listManager.items[index].icon,
+              listManager.items[index].date,
               context,
               index);
         },
@@ -61,6 +62,7 @@ class InputViewState extends State<InputView> {
       String? country,
       String? desc,
       String? icon,
+      DateTime date,
       BuildContext context,
       int index) {
     temp ??= "";
@@ -68,6 +70,7 @@ class InputViewState extends State<InputView> {
     country ??= "";
     desc ??= "";
     icon ??= "";
+    date = DateTime.now();
     Color _iconColor = Colors.white;
     return Center(
         child: Card(
@@ -82,7 +85,16 @@ class InputViewState extends State<InputView> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text(city+","), Text(" "+country)],
+                    children: [
+                      Text(" " + date.toString()),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(city + ","),
+                      Text(" " + country),
+                    ],
                   ),
                   //Text(temp),
                   //Text(city),
@@ -94,26 +106,24 @@ class InputViewState extends State<InputView> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text("Temperature: "+temp +" °C")],
+              children: [Text("Temperature: " + temp + " °C")],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text("Description: "+desc)],
+              children: [Text("Description: " + desc)],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
-                                onPressed: () async {
-                                  await availableCameras().then((value) =>
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  CameraPage(cameras: value))));
-                                },
-                                child: Text("Take a picture"),
-                              ),
+                  onPressed: () async {
+                    await availableCameras().then((value) => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => CameraPage(cameras: value))));
+                  },
+                  child: Text("Take a picture"),
+                ),
                 const SizedBox(width: 8),
                 TextButton(
                   child: const Text('Delete'),
