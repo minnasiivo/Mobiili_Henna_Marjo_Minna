@@ -6,9 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:weather_app/constants/constants.dart';
 import 'package:weather_app/logic/models/weather_model.dart';
 import 'package:weather_app/logic/services/call_to_api.dart';
-import 'package:camera/camera.dart';
+//import 'package:camera/camera.dart';
 
-import '../camera_page.dart';
+//import '../camera_page.dart';
 import '../logic/models/weather_list_manager.dart';
 import 'input_view.dart';
 
@@ -44,6 +44,7 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Consumer<WeatherListManager>(builder: (context, listManager, child) {
       return Scaffold(
+        appBar: AppBar(title: Text('testi')),
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: FutureBuilder(

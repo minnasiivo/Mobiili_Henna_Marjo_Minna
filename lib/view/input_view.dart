@@ -36,6 +36,7 @@ class InputViewState extends State<InputView> {
       });
 
       return Scaffold(
+        appBar: AppBar(title: Text('testi')),
           body: ListView.builder(
         itemCount: listManager.items.length,
         itemBuilder: (BuildContext ctxt, int index) {
