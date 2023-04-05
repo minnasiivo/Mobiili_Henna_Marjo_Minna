@@ -26,7 +26,10 @@ class FirebaseHelper {
   Future<List<WeatherModel>> getData() async {
     List<WeatherModel> weathers = [];
 
-    DatabaseEvent event = await _weatherModelRef.once();
+    DatabaseEvent event = await _weatherModelRef
+        .orderByChild("userid")
+        .equalTo(FirebaseAuth.instance.currentUser!.uid)
+        .once();
     var snapshot = event.snapshot;
 
     for (var child in snapshot.children) {

@@ -162,6 +162,7 @@ class _WeatherPageState extends State<WeatherPage> {
                             textController.text == ""
                                 ? log("No city entered")
                                 : setState(() {
+                                    isFavourite = !isFavourite;
                                     _myData =
                                         getData(false, textController.text);
                                   });
