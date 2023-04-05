@@ -71,6 +71,7 @@ class InputViewState extends State<InputView> {
     desc ??= "";
     icon ??= "";
     date = DateTime.now();
+
     Color _iconColor = Colors.white;
     return Center(
         child: Card(
@@ -120,7 +121,8 @@ class InputViewState extends State<InputView> {
                     await availableCameras().then((value) => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => CameraPage(cameras: value))));
+                            builder: (context) =>
+                                CameraPage(cameras: value, index: index))));
                   },
                   child: Text("Take a picture"),
                 ),

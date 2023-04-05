@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:weather_app/preview_page.dart';
 
-
 class CameraPage extends StatefulWidget {
-  const CameraPage({Key? key, required this.cameras}) : super(key: key);
+  const CameraPage({Key? key, required this.cameras, this.index = -1})
+      : super(key: key);
 
   final List<CameraDescription>? cameras;
+  final int index;
 
   @override
   State<CameraPage> createState() => _CameraPageState();

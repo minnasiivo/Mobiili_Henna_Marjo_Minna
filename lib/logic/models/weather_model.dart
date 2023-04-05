@@ -12,6 +12,7 @@ class WeatherModel {
   String? fbid;
   DateTime date = DateTime.now();
   String? userid;
+  String? pictureURL;
 
   WeatherModel({
     this.id = -1,
@@ -22,6 +23,7 @@ class WeatherModel {
     required this.icon,
     required this.date,
     this.userid,
+    this.pictureURL,
   });
 
 // Luetaan openweatherAPIsta säätiedot:
@@ -52,7 +54,8 @@ class WeatherModel {
         desc = json['desc'] as String,
         icon = json['icon'] as String,
         userid = json['userid'] as String,
-        date = DateTime.parse(json['date'] as String);
+        date = DateTime.parse(json['date'] as String),
+        pictureURL = json['pictureURL'] as String;
 
 // Kirjoitetaan säätieto firebaseen jsonina
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -63,5 +66,6 @@ class WeatherModel {
         'icon': icon,
         'date': date.toString(),
         'userid': userid,
+        'pictureURL': pictureURL,
       };
 }

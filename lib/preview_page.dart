@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:weather_app/data/firebase_helper.dart';
 import 'package:weather_app/view/input_view.dart';
 
 class PreviewPage extends StatelessWidget {
@@ -41,30 +42,11 @@ class PreviewPage extends StatelessWidget {
                 );
                 ScaffoldMessenger.of(context)
                     .showSnackBar(const SnackBar(content: Text('Saved')));
-                // Listen for state changes, errors, and completion of the upload.
-                uploadTask.snapshotEvents.listen((TaskSnapshot taskSnapshot) {
-                  switch (taskSnapshot.state) {
-                    case TaskState.running:
-                      final progress = 100.0 *
-                          (taskSnapshot.bytesTransferred /
-                              taskSnapshot.totalBytes);
-                      print("Upload is $progress% complete.");
-                      break;
-                    case TaskState.paused:
-                      print("Upload is paused.");
-                      break;
-                    case TaskState.canceled:
-                      print("Upload was canceled");
-                      break;
-                    case TaskState.error:
-                      // Handle unsuccessful uploads
-                      break;
-                    case TaskState.success:
-                      // Handle successful uploads on complete
-                      // ...
-                      break;
-                  }
-                });
+
+                final imageURL = await storageRef
+                    .child(
+                        "${FirebaseAuth.instance.currentUser!.uid}/${picture.name}")
+                    .getDownloadURL();
               },
               child: const Text("Save Image")),
         ]),
