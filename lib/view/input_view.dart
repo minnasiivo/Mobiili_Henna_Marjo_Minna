@@ -36,22 +36,22 @@ class InputViewState extends State<InputView> {
       });
 
       return Scaffold(
-        appBar: AppBar(title: Text('testi')),
+          appBar: AppBar(title: Text('testi')),
           body: ListView.builder(
-        itemCount: listManager.items.length,
-        itemBuilder: (BuildContext ctxt, int index) {
-          return _buildCard(
-              listManager,
-              listManager.items[index].temp,
-              listManager.items[index].city,
-              listManager.items[index].country,
-              listManager.items[index].desc,
-              listManager.items[index].icon,
-              listManager.items[index].date,
-              context,
-              index);
-        },
-      ));
+            itemCount: listManager.items.length,
+            itemBuilder: (BuildContext ctxt, int index) {
+              return _buildCard(
+                  listManager,
+                  listManager.items[index].temp,
+                  listManager.items[index].city,
+                  listManager.items[index].country,
+                  listManager.items[index].desc,
+                  listManager.items[index].icon,
+                  listManager.items[index].date,
+                  context,
+                  index);
+            },
+          ));
     });
   }
 
