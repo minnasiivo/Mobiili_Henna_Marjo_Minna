@@ -10,7 +10,7 @@ class WeatherModel {
   String icon;
   int id = -1;
   String? fbid;
-  DateTime date = DateTime.now();
+  //DateTime date = DateTime.now();
 
   WeatherModel({
     this.id = -1,
@@ -19,7 +19,7 @@ class WeatherModel {
     required this.country,
     required this.desc,
     required this.icon,
-    required this.date,
+    //required this.date,
   });
 
   WeatherModel.fromMap(Map<String, dynamic> json, {required dynamic string})
@@ -39,7 +39,7 @@ class WeatherModel {
       'country': this.country,
       'desc': this.desc,
       'icon': this.icon,
-      'date': date.millisecondsSinceEpoch,
+      //'date': date.millisecondsSinceEpoch,
     };
   }
 
@@ -58,6 +58,6 @@ class WeatherModel {
         'country': country,
         'desc': desc,
         'icon': icon,
-        'date' : date,
+        //'date' : date,
       };
 }

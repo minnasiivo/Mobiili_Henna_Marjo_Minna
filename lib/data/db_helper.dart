@@ -61,7 +61,7 @@ class DatabaseHelper {
         country: maps[i]['country'],
         desc: maps[i]['desc'],
         icon: maps[i]['icon'],
-        date: maps[i]['date'],
+        //date: maps[i]['date'],
       );
     });
   }
