@@ -70,7 +70,7 @@ class InputViewState extends State<InputView> {
     country ??= "";
     desc ??= "";
     icon ??= "";
-    date = DateTime.now();
+    date;
     Color _iconColor = Colors.white;
     return Center(
         child: Card(
@@ -82,9 +82,11 @@ class InputViewState extends State<InputView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(" " + date.toString()),
+                Text("${date.hour}:${date.minute<10?'0':''}${date.minute} -"),
+                Text(" ${date.day}.${date.month}.${date.year}"),
               ],
             ),
+            
             ListTile(
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
