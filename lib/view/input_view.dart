@@ -86,7 +86,7 @@ class InputViewState extends State<InputView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(" " + date.toString()),
+                      Text(" " + date.day.toString()+","+date.month.toString()+","+date.year.toString()),
                     ],
                   ),
                   Row(
