@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 //import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import "package:http/http.dart" as http;
@@ -23,10 +24,8 @@ class CallToApi {
         Placemark place = placemarks[0];
         //cityName = 'london'; --> löysi säätiedot logi tulostukseen, mutta heittää errorin
         cityName = place.locality!;
-        log("testaan tässä jotakin" +
-            currentPosition.toString() +
-            "cityname:" +
-            cityName);
+        log("käyttäjänimi: " +
+            FirebaseAuth.instance.currentUser!.uid.toString());
       }
 
       var url = Uri.https('api.openweathermap.org', '/data/2.5/weather',

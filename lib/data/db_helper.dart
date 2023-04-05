@@ -16,7 +16,7 @@ class DatabaseHelper {
   static const columnCountry = 'country';
   static const columnDesc = "desc";
   static const columnIcon = "icon";
-  static const columnDate = "date";
+  // static const columnDate = "date";
 
   late Database _db;
 
@@ -24,7 +24,7 @@ class DatabaseHelper {
     final documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, _databaseName);
 
-    // deleteDatabase(path); //Tämä kommenttiin, kun ei haluta tuhota
+    //deleteDatabase(path); //Tämä kommenttiin, kun ei haluta tuhota
 
     _db = await openDatabase(
       path,
@@ -42,7 +42,7 @@ class DatabaseHelper {
             $columnCountry TEXT NOT NULL,
             $columnDesc TEXT,
             $columnIcon TEXT NOT NULL,
-            $columnDate TEXT,
+       
             )''');
   }
 
@@ -50,7 +50,7 @@ class DatabaseHelper {
     return await _db.insert(table, item.toMap());
   }
 
-  Future<List<WeatherModel>> queryAllRows() async {
+/*  Future<List<WeatherModel>> queryAllRows() async {
     final List<Map<String, dynamic>> maps = await _db.query(table);
 
     return List.generate(maps.length, (i) {
@@ -61,10 +61,10 @@ class DatabaseHelper {
         country: maps[i]['country'],
         desc: maps[i]['desc'],
         icon: maps[i]['icon'],
-        date: maps[i]['date'],
       );
     });
   }
+  */
 
   Future<int> update(WeatherModel item) async {
     return await _db.update(

@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:anim_search_bar/anim_search_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/constants/constants.dart';
@@ -200,18 +201,20 @@ class _WeatherPageState extends State<WeatherPage> {
                                           isFavourite = !isFavourite;
                                         });
                                         if (isFavourite) {
-                                          listManager.add(WeatherModel(
-                                              temp: data.temp,
-                                              city: data.city,
-                                              country: data.country,
-                                              desc: data.desc,
-                                              icon: data.icon,
-                                              date: data.date));
+                                          listManager.add(
+                                            WeatherModel(
+                                                temp: data.temp,
+                                                city: data.city,
+                                                country: data.country,
+                                                desc: data.desc,
+                                                icon: data.icon,
+                                                date: DateTime.now()),
+                                            //  userid: FirebaseAuth.instance.currentUser!.uid.toString()
+                                          );
 
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      'Saved')));
+                                                  content: Text('Saved')));
                                         }
                                       },
                                       icon: Icon(

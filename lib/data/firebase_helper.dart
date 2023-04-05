@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:weather_app/logic/models/weather_model.dart';
 
@@ -6,6 +7,7 @@ class FirebaseHelper {
       FirebaseDatabase.instance.ref().child('weathers');
 
   void saveWeather(WeatherModel weather) {
+    weather.userid = FirebaseAuth.instance.currentUser!.uid;
     _weatherModelRef.push().set(weather.toJson());
   }
 
