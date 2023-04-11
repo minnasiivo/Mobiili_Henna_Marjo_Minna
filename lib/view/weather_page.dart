@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/constants/constants.dart';
 import 'package:weather_app/logic/models/weather_model.dart';
@@ -10,6 +11,7 @@ import 'package:weather_app/logic/services/call_to_api.dart';
 
 //import '../camera_page.dart';
 import '../logic/models/weather_list_manager.dart';
+
 import 'input_view.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -21,7 +23,6 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   Future<WeatherModel> getData(bool isCurrentCity, String cityName) async {
-    log("!Tähän asti päästään ainakin!");
     log("Testi: " + isCurrentCity.toString() + cityName + _myData.toString());
     return await CallToApi().callWeatherAPi(isCurrentCity, cityName);
   }
@@ -44,7 +45,31 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Consumer<WeatherListManager>(builder: (context, listManager, child) {
       return Scaffold(
-        appBar: AppBar(title: Text('testi')),
+        appBar: AppBar(
+          title: Text(FirebaseAuth.instance.currentUser!.email.toString()),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.logout_rounded,
+                color: Colors.black,
+              ),
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+
+                FirebaseAuth.instance.authStateChanges().listen((User? user) {
+                  if (user == null) {
+                    print('User is currently signed out!');
+                    Navigator.of(context).pushReplacementNamed(
+                      '/sign-in',
+                    );
+                  } else {
+                    print('User is signed in!');
+                  }
+                });
+              },
+            )
+          ],
+        ),
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: FutureBuilder(

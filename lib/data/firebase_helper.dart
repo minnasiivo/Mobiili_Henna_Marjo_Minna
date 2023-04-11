@@ -17,6 +17,12 @@ class FirebaseHelper {
     }
   }
 
+  void AddPicture(WeatherModel item) {
+    if (item.fbid != null) {
+      _weatherModelRef.child(item.fbid.toString()).update(item.toJson());
+    }
+  }
+
   void DeleteItem(WeatherModel item) {
     if (item.fbid != null) {
       _weatherModelRef.child(item.fbid.toString()).remove();
