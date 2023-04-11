@@ -123,6 +123,23 @@ class _WeatherPageState extends State<WeatherPage> {
                           style: f14RblackLetterSpacing2,
                           onSubmitted: (String text) {},
                         ),
+                        CircleAvatar(
+                          radius: 26,
+                          backgroundColor: Colors.amber,
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.description,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => InputView()),
+                              );
+                            },
+                          ),
+                        ),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -131,7 +148,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                 'City not found', //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
                                 style: f24Rwhitebold,
                               ),
-                              Text('testi: ' + snapshot.data.toString())
+                              //Text('testi: ' + snapshot.data.toString())
                             ],
                           ),
                         ),
@@ -178,7 +195,7 @@ class _WeatherPageState extends State<WeatherPage> {
                           width: 400,
                           color: Colors.amber, //255, 255, 181, 107
                           textController: textController,
-                          suffixIcon: Icon(
+                          suffixIcon: const Icon(
                             Icons.search,
                             color: Colors.black,
                             size: 26,
@@ -198,15 +215,32 @@ class _WeatherPageState extends State<WeatherPage> {
                           style: f14RblackLetterSpacing2,
                           onSubmitted: (String text) {},
                         ),
+                        CircleAvatar(
+                          radius: 26,
+                          backgroundColor: Colors.amber, //<-- SEE HERE
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.description,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => InputView()),
+                              );
+                            },
+                          ),
+                        ),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 (now.day.toString() +
-                                    ". " +
+                                    "." +
                                     now.month.toString() +
-                                    ". " +
+                                    "." +
                                     now.year
                                         .toString()), //Kellonajat saa: now.hour.toString() + ":" + now.minute.toString()
                                 style: f16PW,
@@ -269,7 +303,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                     data.icon +
                                     '@2x.png',
                               ),
-                              Center(
+                              /*Center(
                                 child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
@@ -279,7 +313,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                       );
                                     },
                                     child: const Text("To My Weather Diary")),
-                              ),
+                              ), */
                               /*ElevatedButton(
                                 onPressed: () async {
                                   await availableCameras().then((value) =>
