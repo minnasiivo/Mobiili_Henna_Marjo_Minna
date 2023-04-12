@@ -303,28 +303,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                     data.icon +
                                     '@2x.png',
                               ),
-                              /*Center(
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => InputView()),
-                                      );
-                                    },
-                                    child: const Text("To My Weather Diary")),
-                              ), */
-                              /*ElevatedButton(
-                                onPressed: () async {
-                                  await availableCameras().then((value) =>
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  CameraPage(cameras: value))));
-                                },
-                                child: Text("Take a picture"),
-                              )*/
                             ],
                           ),
                         ),

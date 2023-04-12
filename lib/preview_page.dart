@@ -5,8 +5,12 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/data/firebase_helper.dart';
 import 'package:weather_app/view/input_view.dart';
+
+import 'logic/models/weather_list_manager.dart';
+import 'logic/models/weather_model.dart';
 
 class PreviewPage extends StatelessWidget {
   PreviewPage({Key? key, required this.picture}) : super(key: key);
@@ -21,6 +25,11 @@ class PreviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   return Consumer<WeatherListManager>(builder: (context, listManager, child) {
+      {
+       // listManager.add(item);
+      }
+
     return Scaffold(
       appBar: AppBar(title: const Text('Preview Picture')),
       body: Center(
@@ -47,10 +56,18 @@ class PreviewPage extends StatelessWidget {
                     .child(
                         "${FirebaseAuth.instance.currentUser!.uid}/${picture.name}")
                     .getDownloadURL();
+
+                      listManager.add(
+                        WeatherModel(
+                                               pictureURL:imageURL,
+                                        
+                                          );
+                                       
               },
               child: const Text("Save Image")),
         ]),
       ),
     );
+  });
   }
 }

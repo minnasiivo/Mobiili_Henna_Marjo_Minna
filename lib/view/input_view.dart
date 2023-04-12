@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:camera/camera.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 //import 'weather_page.dart';
 //import 'package:weather_app/globals.dart';
 import 'package:weather_app/logic/models/weather_list_manager.dart';
@@ -10,7 +14,21 @@ import 'package:provider/provider.dart';
 
 // Create a Form widget.
 class InputView extends StatefulWidget {
-  const InputView({super.key});
+  InputView({
+    Key? key,
+  }) : super(key: key);
+  final storage = FirebaseStorage.instance;
+
+// Create the file metadata
+  final metadata = SettableMetadata(contentType: "image/jpg");
+
+// Create a reference to the Firebase Storage bucket
+
+  //final imageRef = storageRef.child("images/island.jpg");
+
+//final appDocDir = await getApplicationDocumentsDirectory();
+//final filePath = "${appDocDir.absolute}/images/island.jpg";
+//final file = File(filePath);
 
   @override
   State<InputView> createState() {
@@ -20,49 +38,62 @@ class InputView extends StatefulWidget {
 
 class InputViewState extends State<InputView> {
   final _formKey = GlobalKey<FormState>();
+  final storageRef = FirebaseStorage.instance.ref();
+  String imageUrl = "";
+
+  Future<void> imageURLdownload() async {
+    imageUrl =
+        await storageRef.child("CAP5750514966609877952.jpg").getDownloadURL();
+  }
 
   @override
   void initState() {
     super.initState();
+    //imageURLdownload();
   }
 
   @override
   Widget build(BuildContext context) {
     List<WeatherModel> itemList = [];
-
+    imageURLdownload();
     return Consumer<WeatherListManager>(builder: (context, listManager, child) {
       itemList.forEach((item) {
         listManager.add(item);
       });
 
       return Scaffold(
-          appBar: AppBar(leading: IconButton(
+          appBar: AppBar(
+            leading: IconButton(
               icon: const Icon(
                 Icons.home,
                 color: Colors.black,
               ),
               onPressed: () {
-                 Navigator.push(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => WeatherPage()),
                 );
               },
             ),
-          
-        ),
+          ),
           body: ListView.builder(
             itemCount: listManager.items.length,
-            itemBuilder: (BuildContext ctxt, int index) {
+            itemBuilder: (
+              BuildContext ctxt,
+              int index,
+            ) {
               return _buildCard(
-                  listManager,
-                  listManager.items[index].temp,
-                  listManager.items[index].city,
-                  listManager.items[index].country,
-                  listManager.items[index].desc,
-                  listManager.items[index].icon,
-                  listManager.items[index].date,
-                  context,
-                  index);
+                listManager,
+                listManager.items[index].temp,
+                listManager.items[index].city,
+                listManager.items[index].country,
+                listManager.items[index].desc,
+                listManager.items[index].icon,
+                listManager.items[index].date,
+                context,
+                index,
+                imageUrl,
+              );
             },
           ));
     });
@@ -77,7 +108,8 @@ class InputViewState extends State<InputView> {
       String? icon,
       DateTime date,
       BuildContext context,
-      int index) {
+      int index,
+      String imageUrl) {
     temp ??= "";
     city ??= "";
     country ??= "";
@@ -85,6 +117,7 @@ class InputViewState extends State<InputView> {
     icon ??= "";
     date;
     Color _iconColor = Colors.white;
+
     return Center(
         child: Card(
       child: Padding(
@@ -119,6 +152,7 @@ class InputViewState extends State<InputView> {
                 ],
               ),
             ),
+            Row(children: [Image.network(height: 100, width: 100, imageUrl)]),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text("Temperature: " + temp + " °C")],
