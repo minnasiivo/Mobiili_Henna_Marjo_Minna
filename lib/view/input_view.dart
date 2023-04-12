@@ -49,13 +49,13 @@ class InputViewState extends State<InputView> {
   @override
   void initState() {
     super.initState();
-    //imageURLdownload();
+    imageURLdownload();
   }
 
   @override
   Widget build(BuildContext context) {
     List<WeatherModel> itemList = [];
-    imageURLdownload();
+
     return Consumer<WeatherListManager>(builder: (context, listManager, child) {
       itemList.forEach((item) {
         listManager.add(item);
@@ -71,7 +71,7 @@ class InputViewState extends State<InputView> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WeatherPage()),
+                  MaterialPageRoute(builder: (context) => const WeatherPage()),
                 );
               },
             ),

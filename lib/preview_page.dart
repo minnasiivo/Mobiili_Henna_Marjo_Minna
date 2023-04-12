@@ -13,10 +13,22 @@ import 'logic/models/weather_list_manager.dart';
 import 'logic/models/weather_model.dart';
 
 class PreviewPage extends StatelessWidget {
-  PreviewPage({Key? key, required this.picture}) : super(key: key);
+  PreviewPage({Key? key, required this.picture, this.index = -1})
+      : super(key: key);
+
+  late final int index;
   final storage = FirebaseStorage.instance;
   final XFile picture;
-
+  String temp = "";
+  String city = "";
+  String country = "";
+  String desc = "";
+  String icon = "";
+  int id = -1;
+  String? fbid;
+  DateTime date = DateTime.now();
+  String? userid;
+  String? pictureURL;
 // Create the file metadata
   final metadata = SettableMetadata(contentType: "image/jpg");
 
@@ -25,49 +37,70 @@ class PreviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   return Consumer<WeatherListManager>(builder: (context, listManager, child) {
+    return Consumer<WeatherListManager>(builder: (context, listManager, child) {
       {
-       // listManager.add(item);
+        WeatherModel? item =
+            Provider.of<WeatherListManager>(context, listen: false)
+                .getItem(index);
+        if (item != null) {
+          temp = item.temp;
+          city = item.city;
+          country = item.country;
+          desc = item.desc;
+          icon = item.icon;
+          id = item.id;
+          fbid = item.fbid;
+          date = item.date;
+          userid = item.userid;
+        }
       }
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Preview Picture')),
-      body: Center(
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Image.file(File(picture.path), fit: BoxFit.cover, width: 250),
-          const SizedBox(height: 24),
-          Text(picture.name),
-          ElevatedButton(
-              onPressed: () async {
-                final file = File(picture.path);
-                final uploadTask = storageRef
-                    .child(
-                        "${FirebaseAuth.instance.currentUser!.uid}/${picture.name}")
-                    .putFile(file, metadata);
+      return Scaffold(
+        appBar: AppBar(title: const Text('Preview Picture')),
+        body: Center(
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            Image.file(File(picture.path), fit: BoxFit.cover, width: 250),
+            const SizedBox(height: 24),
+            Text(picture.name),
+            ElevatedButton(
+                onPressed: () async {
+                  final file = File(picture.path);
+                  final uploadTask = storageRef
+                      .child(
+                          "${FirebaseAuth.instance.currentUser!.uid}/${picture.name}")
+                      .putFile(file, metadata);
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InputView()),
-                );
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(const SnackBar(content: Text('Saved')));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InputView()),
+                  );
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(const SnackBar(content: Text('Saved')));
 
-                final imageURL = await storageRef
-                    .child(
-                        "${FirebaseAuth.instance.currentUser!.uid}/${picture.name}")
-                    .getDownloadURL();
+                  final imageURL = await storageRef
+                      .child(
+                          "${FirebaseAuth.instance.currentUser!.uid}/${picture.name}")
+                      .getDownloadURL();
 
-                      listManager.add(
-                        WeatherModel(
-                                               pictureURL:imageURL,
-                                        
-                                          );
-                                       
-              },
-              child: const Text("Save Image")),
-        ]),
-      ),
-    );
-  });
+                  listManager.editItem(
+                      index,
+                      WeatherModel(
+                        temp: temp,
+                        city: city,
+                        country: country,
+                        desc: desc,
+                        icon: icon,
+                        id: id,
+                        //fbid!?!?!?!
+                        date: date,
+                        userid: userid,
+                        pictureURL: imageURL,
+                      ));
+                },
+                child: const Text("Save Image")),
+          ]),
+        ),
+      );
+    });
   }
 }

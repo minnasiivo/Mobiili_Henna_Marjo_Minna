@@ -29,6 +29,7 @@ class WeatherModel {
 // Luetaan openweatherAPIsta säätiedot:
   WeatherModel.fromMap(Map<String, dynamic> json, {required dynamic string})
       : temp = json['main']['temp']
+            .round()
             .toString(), //Miten saa yhden desimaalin tarkkuudella?
         city = json['name'],
         country = json['sys']['country'],

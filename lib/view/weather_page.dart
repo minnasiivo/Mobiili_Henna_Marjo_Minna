@@ -27,6 +27,8 @@ class _WeatherPageState extends State<WeatherPage> {
     return await CallToApi().callWeatherAPi(isCurrentCity, cityName);
   }
 
+  double targetValue = 24.0;
+
   bool isFavourite = false;
   DateTime now = DateTime.now();
 
@@ -256,6 +258,52 @@ class _WeatherPageState extends State<WeatherPage> {
                                     data.country,
                                     style: f24Rwhitebold,
                                   ),
+                                  TweenAnimationBuilder<double>(
+                                    tween: Tween<double>(
+                                        begin: 0, end: targetValue),
+                                    duration: const Duration(milliseconds: 350),
+                                    builder: (BuildContext context, double size,
+                                        Widget? child) {
+                                      return IconButton(
+                                          iconSize: size,
+                                          //  color: Colors.red,
+                                          icon: child!,
+                                          color: isFavourite
+                                              ? Color.fromARGB(255, 210, 10,
+                                                  10) //255, 243, 144, 96
+                                              : Color.fromARGB(
+                                                  255, 104, 104, 104),
+                                          onPressed: () {
+                                            setState(() {
+                                              targetValue = targetValue == 24.0
+                                                  ? 48.0
+                                                  : 24.0;
+                                              isFavourite = !isFavourite;
+                                            });
+                                            if (isFavourite) {
+                                              listManager.add(
+                                                WeatherModel(
+                                                    temp: data.temp,
+                                                    city: data.city,
+                                                    country: data.country,
+                                                    desc: data.desc,
+                                                    icon: data.icon,
+                                                    date: DateTime.now()),
+                                                //  userid: FirebaseAuth.instance.currentUser!.uid.toString()
+                                              );
+
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(const SnackBar(
+                                                      content: Text('Saved')));
+                                            }
+                                          });
+                                    },
+                                    child: const Icon(
+                                      Icons.favorite,
+                                    ),
+                                  ),
+
+/*
                                   IconButton(
                                       onPressed: () {
                                         setState(() {
@@ -285,7 +333,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                                 10) //255, 243, 144, 96
                                             : Color.fromARGB(
                                                 255, 104, 104, 104),
-                                      )) //255, 114, 113, 113
+                                      )) //255, 114, 113, 113*/
                                 ],
                               ),
                               height25,
