@@ -2,9 +2,13 @@
 
 Mobiilisovelluskehitys-kurssin harjoitustyö.
 
-## Getting Started
+Käytetään OpenWeatherMap API:a säätietojen hakuun. Mahdollisuus tallentaa päiväkirjaan sääkortteja. Sääkortteihin saa lisättyä kuvia. Sovelluksessa käytetään hyödyksi puhelimen sijaintia sekä kameraa. Tallenukseen käytetty Firebasea. 
 
-Käytetään OpenWeatherMap API:a.
+# Sovelluksen näkymät
+
+*Tähän kuvat/kuvaukset näkymistä, esim. etusivu, päiväkirjasivu jne.*
+
+Lähteenä käytetty: *Tähän linkit käytettyihin repositorioihin*
 
 
 
