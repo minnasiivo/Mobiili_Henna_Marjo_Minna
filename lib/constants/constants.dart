@@ -10,6 +10,9 @@ const height25 = SizedBox(
 TextStyle f14RblackLetterSpacing2 = TextStyle(
     fontSize: 14, fontFamily: 'Poppins', color: textColor, letterSpacing: 2);
 
+TextStyle f14RwhiteLetterSpacing2 = const TextStyle(
+    fontSize: 14, fontFamily: 'Poppins', color: Colors.white, letterSpacing: 2);
+
 TextStyle f16PW =
     const TextStyle(color: Colors.white, fontFamily: 'Poppins', fontSize: 16);
 

@@ -105,6 +105,10 @@ class PreviewPage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => InputView()),
                   );
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 145, 85, 245),
+                  // Background color
+                ),
                 child: const Text("Save Image")),
           ]),
         ),

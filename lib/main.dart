@@ -1,15 +1,9 @@
-//import 'dart:developer';
-
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/globals.dart';
 import 'package:weather_app/logic/models/weather_list_manager.dart';
-
 import 'package:weather_app/view/weather_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'firebase_options.dart';
@@ -44,9 +38,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //debug banneri pois näkyvistä
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.purple,
         appBarTheme: const AppBarTheme(
-          color:Colors.amber)),
+          color:Color.fromARGB(255, 145, 85, 245))),
       initialRoute:
           FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/mainpage',
       routes: {
