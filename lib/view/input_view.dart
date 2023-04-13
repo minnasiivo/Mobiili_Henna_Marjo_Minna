@@ -151,9 +151,6 @@ class InputViewState extends State<InputView> {
                 ],
               ),
             ),
-            Column(children: [
-              Center(child: Image.network(height: 100, width: 100, pictureURL!))
-            ]),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text("Temperature: " + temp + " °C")],
@@ -162,6 +159,12 @@ class InputViewState extends State<InputView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text("Description: " + desc)],
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            Column(children: [
+              Center(child: Image.network(height: 100, width: 100, pictureURL!))
+            ]),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
