@@ -25,7 +25,7 @@ class WeatherModel {
     this.fbid,
     this.userid,
     this.pictureURL =
-        'https://firebasestorage.googleapis.com/v0/b/weatherapp-7c11d.appspot.com/o/CAP7682421739371229962.jpg?alt=media&token=cac001e6-a27f-4c6e-87b2-a5ccdffced1d',
+        'https://firebasestorage.googleapis.com/v0/b/weatherapp-7c11d.appspot.com/o/defaultimg.jpg?alt=media&token=5e8527e6-09c3-4ee8-851d-dfccc01add30',
   });
 
 // Luetaan openweatherAPIsta säätiedot:
