@@ -151,8 +151,8 @@ class InputViewState extends State<InputView> {
                 ],
               ),
             ),
-            Row(children: [
-              Image.network(height: 100, width: 100, pictureURL!)
+            Column(children: [
+              Center(child: Image.network(height: 100, width: 100, pictureURL!))
             ]),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
