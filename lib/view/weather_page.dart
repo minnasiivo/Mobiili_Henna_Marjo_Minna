@@ -53,7 +53,7 @@ class _WeatherPageState extends State<WeatherPage> {
             IconButton(
               icon: Icon(
                 Icons.logout_rounded,
-                color: Colors.black,
+                color: Colors.white,
               ),
               onPressed: () async {
                 await FirebaseAuth.instance.signOut();
@@ -89,8 +89,8 @@ class _WeatherPageState extends State<WeatherPage> {
                         Color.fromARGB(255, 135, 35, 135), //255, 65, 89, 224
                         Color.fromARGB(255, 140, 30, 131), //255, 83, 92, 215
                         Color.fromARGB(255, 155, 33, 104), //255, 86, 88, 177
-                        Color.fromARGB(255, 59, 74, 205), //255, 243, 144, 96
-                        Color.fromARGB(255, 153, 94, 255), //255, 255, 181, 107
+                        Color.fromARGB(255, 121, 74, 202), //255, 243, 144, 96
+                        Color.fromARGB(255, 74, 42, 134), //255, 121, 74, 202
                       ],
                       tileMode: TileMode.mirror,
                     ),
@@ -104,12 +104,12 @@ class _WeatherPageState extends State<WeatherPage> {
                           //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
                           rtl: true,
                           width: 400,
-                          color: Colors.amber, //255, 255, 181, 107
+                          color: const Color.fromARGB(255, 145, 85, 245), //255, 255, 181, 107
                           textController: textController,
-                          suffixIcon: Icon(
+                          suffixIcon: const Icon(
                             Icons.search,
-                            color: Colors.black,
-                            size: 26,
+                            color: Colors.white,
+                            size: 24,
                           ),
                           onSuffixTap: () async {
                             textController.text == ""
@@ -125,22 +125,28 @@ class _WeatherPageState extends State<WeatherPage> {
                           style: f14RblackLetterSpacing2,
                           onSubmitted: (String text) {},
                         ),
-                        CircleAvatar(
-                          radius: 26,
-                          backgroundColor: Colors.amber,
-                          child: IconButton(
-                            icon: const Icon(
-                              Icons.description,
-                              color: Colors.black,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            CircleAvatar(
+                              radius: 24,
+                              backgroundColor:const Color.fromARGB(255, 145, 85, 245),
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.description,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => InputView()),
+                                  );
+                                },
+                              ),
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => InputView()),
-                              );
-                            },
-                          ),
+                          ],
                         ),
                         Expanded(
                           child: Column(
@@ -180,8 +186,8 @@ class _WeatherPageState extends State<WeatherPage> {
                         Color.fromARGB(255, 135, 35, 135), //255, 65, 89, 224
                         Color.fromARGB(255, 140, 30, 131), //255, 83, 92, 215
                         Color.fromARGB(255, 155, 33, 104), //255, 86, 88, 177
-                        Color.fromARGB(255, 59, 74, 205), //255, 243, 144, 96
-                        Color.fromARGB(255, 153, 94, 255), //255, 255, 181, 107
+                        Color.fromARGB(255, 121, 74, 202), //255, 243, 144, 96
+                        Color.fromARGB(255, 74, 42, 134), //255, 153, 94, 255
                       ],
                       tileMode: TileMode.mirror,
                     ),
@@ -195,11 +201,11 @@ class _WeatherPageState extends State<WeatherPage> {
                           //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
                           rtl: true,
                           width: 400,
-                          color: Colors.amber, //255, 255, 181, 107
+                          color: const Color.fromARGB(255, 145, 85, 245), //255, 255, 181, 107
                           textController: textController,
-                          suffixIcon: const Icon(
+                          suffixIcon: Icon(
                             Icons.search,
-                            color: Colors.black,
+                            color: Colors.white,
                             size: 26,
                           ),
                           onSuffixTap: () async {
@@ -217,22 +223,28 @@ class _WeatherPageState extends State<WeatherPage> {
                           style: f14RblackLetterSpacing2,
                           onSubmitted: (String text) {},
                         ),
-                        CircleAvatar(
-                          radius: 26,
-                          backgroundColor: Colors.amber, //<-- SEE HERE
-                          child: IconButton(
-                            icon: const Icon(
-                              Icons.description,
-                              color: Colors.black,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            CircleAvatar(
+                              radius: 24,
+                              backgroundColor: const Color.fromARGB(255, 145, 85, 245), //<-- SEE HERE
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.description,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => InputView()),
+                                  );
+                                },
+                              ),
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => InputView()),
-                              );
-                            },
-                          ),
+                          ],
                         ),
                         Expanded(
                           child: Column(

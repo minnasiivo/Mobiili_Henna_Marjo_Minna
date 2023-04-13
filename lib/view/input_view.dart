@@ -63,7 +63,7 @@ class InputViewState extends State<InputView> {
             leading: IconButton(
               icon: const Icon(
                 Icons.home,
-                color: Colors.black,
+                color: Colors.white,
               ),
               onPressed: () {
                 Navigator.push(
