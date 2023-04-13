@@ -16,19 +16,12 @@ import 'package:provider/provider.dart';
 class InputView extends StatefulWidget {
   InputView({
     Key? key,
+    int? index,
   }) : super(key: key);
   final storage = FirebaseStorage.instance;
 
 // Create the file metadata
   final metadata = SettableMetadata(contentType: "image/jpg");
-
-// Create a reference to the Firebase Storage bucket
-
-  //final imageRef = storageRef.child("images/island.jpg");
-
-//final appDocDir = await getApplicationDocumentsDirectory();
-//final filePath = "${appDocDir.absolute}/images/island.jpg";
-//final file = File(filePath);
 
   @override
   State<InputView> createState() {
@@ -39,17 +32,21 @@ class InputView extends StatefulWidget {
 class InputViewState extends State<InputView> {
   final _formKey = GlobalKey<FormState>();
   final storageRef = FirebaseStorage.instance.ref();
+  int index = -1;
+  String? imageName = "";
   String imageUrl = "";
-
+/*
   Future<void> imageURLdownload() async {
-    imageUrl =
-        await storageRef.child("CAP5750514966609877952.jpg").getDownloadURL();
-  }
+    imageUrl = 
+    //await storageRef.child(imageName!).getDownloadURL();
+    //imageUrl =
+    //  await storageRef.child('CAP7682421739371229962.jpg').getDownloadURL();
+  }*/
 
   @override
   void initState() {
     super.initState();
-    imageURLdownload();
+    //imageURLdownload();
   }
 
   @override
@@ -60,7 +57,7 @@ class InputViewState extends State<InputView> {
       itemList.forEach((item) {
         listManager.add(item);
       });
-
+      imageName = listManager.getItem(index)?.pictureURL;
       return Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -90,9 +87,9 @@ class InputViewState extends State<InputView> {
                 listManager.items[index].desc,
                 listManager.items[index].icon,
                 listManager.items[index].date,
+                listManager.items[index].pictureURL,
                 context,
                 index,
-                imageUrl,
               );
             },
           ));
@@ -100,16 +97,17 @@ class InputViewState extends State<InputView> {
   }
 
   Center _buildCard(
-      WeatherListManager listManager,
-      String? temp,
-      String? city,
-      String? country,
-      String? desc,
-      String? icon,
-      DateTime date,
-      BuildContext context,
-      int index,
-      String imageUrl) {
+    WeatherListManager listManager,
+    String? temp,
+    String? city,
+    String? country,
+    String? desc,
+    String? icon,
+    DateTime date,
+    String? pictureURL,
+    BuildContext context,
+    int index,
+  ) {
     temp ??= "";
     city ??= "";
     country ??= "";
@@ -117,6 +115,7 @@ class InputViewState extends State<InputView> {
     icon ??= "";
     date;
     Color _iconColor = Colors.white;
+    print("indeksi:   $index");
 
     return Center(
         child: Card(
@@ -152,7 +151,9 @@ class InputViewState extends State<InputView> {
                 ],
               ),
             ),
-            Row(children: [Image.network(height: 100, width: 100, imageUrl)]),
+            Row(children: [
+              Image.network(height: 100, width: 100, pictureURL!)
+            ]),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text("Temperature: " + temp + " °C")],

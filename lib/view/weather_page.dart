@@ -288,6 +288,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                                     country: data.country,
                                                     desc: data.desc,
                                                     icon: data.icon,
+                                                    fbid: data.fbid,
                                                     date: DateTime.now()),
                                                 //  userid: FirebaseAuth.instance.currentUser!.uid.toString()
                                               );

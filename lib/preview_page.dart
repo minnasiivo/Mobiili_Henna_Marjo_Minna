@@ -52,6 +52,7 @@ class PreviewPage extends StatelessWidget {
           fbid = item.fbid;
           date = item.date;
           userid = item.userid;
+          pictureURL = item.pictureURL;
         }
       }
 
@@ -65,15 +66,11 @@ class PreviewPage extends StatelessWidget {
             ElevatedButton(
                 onPressed: () async {
                   final file = File(picture.path);
-                  final uploadTask = storageRef
+                  final uploadTask = await storageRef
                       .child(
                           "${FirebaseAuth.instance.currentUser!.uid}/${picture.name}")
                       .putFile(file, metadata);
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => InputView()),
-                  );
                   ScaffoldMessenger.of(context)
                       .showSnackBar(const SnackBar(content: Text('Saved')));
 
@@ -81,6 +78,12 @@ class PreviewPage extends StatelessWidget {
                       .child(
                           "${FirebaseAuth.instance.currentUser!.uid}/${picture.name}")
                       .getDownloadURL();
+
+                  print("IMAGEN URL TOIVOTTAVASTI: " + imageURL);
+
+                  /*uploadTask.storage
+                      .ref(picture.path)
+                      .getDownloadURL();*/
 
                   listManager.editItem(
                       index,
@@ -91,11 +94,16 @@ class PreviewPage extends StatelessWidget {
                         desc: desc,
                         icon: icon,
                         id: id,
-                        //fbid!?!?!?!
                         date: date,
                         userid: userid,
+                        fbid: fbid,
                         pictureURL: imageURL,
                       ));
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InputView()),
+                  );
                 },
                 child: const Text("Save Image")),
           ]),
