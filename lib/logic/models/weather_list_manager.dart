@@ -7,7 +7,7 @@ import 'package:weather_app/logic/models/weather_model.dart';
 import '../../data/firebase_helper.dart';
 
 class WeatherListManager extends ChangeNotifier {
-  /// Internal, private state of the cart.
+  /// Internal, private state of the list.
   final List<WeatherModel> _items = [];
   final fbHelper = FirebaseHelper();
 
@@ -21,22 +21,20 @@ class WeatherListManager extends ChangeNotifier {
   /// An unmodifiable view of the items in the cart.
   UnmodifiableListView<WeatherModel> get items => UnmodifiableListView(_items);
 
-  /// Adds [item] to cart. This and [removeAll] are the only ways to modify the
-  /// cart from the outside.
+  /// Adds [item] to list. This and [removeAll] are the only ways to modify the
+  /// list from the outside.
   void add(WeatherModel item) {
     log("Add a new item");
     _items.add(item);
 
     fbHelper.saveWeather(item);
 
-    //  dbHelper.insert(item);
     // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();
   }
 
-  /// Removes all items from the cart.
+  /// Removes all items from the list.
   void removeAll() {
-    //_items.remove(TodoItem('Ensimmäinen tehtävä', 'Tehtävän kuvaus', DateTime.parse('2023-01-01'), false));
     _items.clear();
     // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();

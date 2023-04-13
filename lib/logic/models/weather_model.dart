@@ -1,6 +1,5 @@
 //import 'package:flutter/material.dart';
-
-import 'dart:developer';
+//import 'dart:developer';
 
 class WeatherModel {
   String temp;
@@ -43,7 +42,6 @@ class WeatherModel {
       'country': this.country,
       'desc': this.desc,
       'icon': this.icon,
-      //'date': date.millisecondsSinceEpoch,
     };
   }
 

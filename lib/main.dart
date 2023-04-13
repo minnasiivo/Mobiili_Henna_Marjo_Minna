@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, //debug banneri pois näkyvistä
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           color:Colors.amber)),
       initialRoute:
           FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/mainpage',
