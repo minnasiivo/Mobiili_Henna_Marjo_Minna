@@ -78,7 +78,7 @@ class DatabaseHelper {
   Future<int> delete(int id) async {
     return await _db.delete(table, where: '$columnId = ?', whereArgs: [id]);
   }
-
+/*
   Future<void> deleteDatabase(String path) =>
-      databaseFactory.deleteDatabase(path);
+      databaseFactory.deleteDatabase(path);*/
 }

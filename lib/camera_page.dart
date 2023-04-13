@@ -4,18 +4,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:weather_app/preview_page.dart';
 
 class CameraPage extends StatefulWidget {
-  const CameraPage({Key? key, required this.cameras, int? index})
+  const CameraPage({Key? key, required this.cameras, this.index = -1})
       : super(key: key);
-
+  final int index;
   final List<CameraDescription>? cameras;
   @override
-  State<CameraPage> createState() => _CameraPageState();
+  State<CameraPage> createState() => _CameraPageState(index);
 }
 
 class _CameraPageState extends State<CameraPage> {
   int index = -1;
   late CameraController _cameraController;
   bool _isRearCameraSelected = true;
+
+  _CameraPageState(this.index);
 
   @override
   void dispose() {

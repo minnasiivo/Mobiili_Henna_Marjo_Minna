@@ -50,13 +50,13 @@ class WeatherListManager extends ChangeNotifier {
   void editItem(int index, WeatherModel item) {
     if (_items.length > index && index >= 0) {
       _items[index] = item;
-      dbHelper.update(item);
+      fbHelper.UpdateWeatherItem(item);
       notifyListeners();
     }
   }
 
   void deleteItem(WeatherModel item) {
-    dbHelper.delete(item.id);
+    // dbHelper.delete(item.id);
     fbHelper.DeleteItem(item);
     _items.remove(item);
     notifyListeners();
