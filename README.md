@@ -12,6 +12,6 @@ Lähteenä käytetty: *Tähän linkit käytettyihin repositorioihin*
 
 
 etusivu
-![Alt text](Kuvia/aloitus.jpeg "Aloitus")
+
 
 
