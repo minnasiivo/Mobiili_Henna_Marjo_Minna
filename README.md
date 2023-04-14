@@ -22,7 +22,7 @@ Lähteenä käytetty repositorio: https://github.com/SamiaAshraff/WeatherCast
 
 etusivu
 *	sivu toimii esikatselutilana/etusivuna
-*	voi lisätä haetun paikan suosikkeihin
+*	haetun paikan lisääminen suosikkeihin
 *	kuvaus säästä ja lämpötila
 *	hakutoiminto
 
@@ -35,17 +35,17 @@ kirjautuminen
 ![Alt text](pictures/kirjaus.jpeg "Kirjaus")
 
 kamera
-*	ottaa kuvan
-*	tallentaa tietokantaan
+*	kuvan ottaminen
+*	tallentaminen tietokantaan
 
 
 ![Alt text](pictures/kuva.jpeg "Kuva")
 
 päiväkirja
-*	voi poistaa tallennettuja tietoja?
-*	avata kameran ja ottaa kuvan
-*	tallentaa haetut säätiedot
-*	pystyy poistamaan tietoja
+*	tallennettujen tietojen poistaminen
+*	kamera ja kuvan ottaminen
+*	haettujen säätietojen tallennus
+*	tietojen poistaminen
 
 ![Alt text](pictures/pk.jpeg "Pk")
 
