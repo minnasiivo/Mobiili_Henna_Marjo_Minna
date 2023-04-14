@@ -11,5 +11,7 @@ Käytetään OpenWeatherMap API:a säätietojen hakuun. Mahdollisuus tallentaa p
 Lähteenä käytetty: *Tähän linkit käytettyihin repositorioihin*
 
 
+etusivu
+![aloitus](https://github.com/minnasiivo/Mobiili_Henna_Marjo_Minna.git/blob/main/kuvia/aloitus.jpeg?raw=true)
 
 
