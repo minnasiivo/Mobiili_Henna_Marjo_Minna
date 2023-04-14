@@ -13,10 +13,13 @@ Lähteenä käytetty: *Tähän linkit käytettyihin repositorioihin*
 
 etusivu:
 ![Alt text](pictures/aloitus.jpeg "Aloitus")
+
 kirjautuminen:
 ![Alt text](pictures/kirjaus.jpeg "Kirjaus")
+
 kamera:
 ![Alt text](pictures/kuva.jpeg "Kuva")
+
 päiväkirja:
 ![Alt text](pictures/pk.jpeg "Pk")
 
