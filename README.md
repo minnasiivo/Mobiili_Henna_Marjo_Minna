@@ -24,11 +24,7 @@ Lähteenä käytetty repositorio: https://github.com/SamiaAshraff/WeatherCast
 Lähteenä käytetty: *Tähän linkit käytettyihin repositorioihin*
 
 
-etusivu *	voi poistaa tallennettuja tietoja?
-*	avata kameran ja ottaa kuvan
-*	tallentaa haetut säätiedot
-*	pystyy poistamaan tietoja
-:
+etusivu:
 
 ![Alt text](pictures/aloitus.jpeg "Aloitus")
 
@@ -40,7 +36,11 @@ kamera:
 
 ![Alt text](pictures/kuva.jpeg "Kuva")
 
-päiväkirja:
+päiväkirja
+*	voi poistaa tallennettuja tietoja?
+*	avata kameran ja ottaa kuvan
+*	tallentaa haetut säätiedot
+*	pystyy poistamaan tietoja:
 
 ![Alt text](pictures/pk.jpeg "Pk")
 
