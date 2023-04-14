@@ -4,13 +4,13 @@ Tämä on sääsovellus, joka hakee säätietoja halutun maan tai kaupungin muka
 Sovelluksessa käytetään puhelimen ominaisuuksista sijaintia (GPS) ja kameraa.
 Sovellukseen lisätty mm. seuraavat paketit (haettu komennolla Flutter pub deps):
 anim_search_bar 2.0.3
-•	sovelluksen hakupalkki
+*	sovelluksen hakupalkki
 camera 0.10.3+2
-•	sovelluksen kamera
+*	sovelluksen kamera
 firebase_auth 4.4.0
-•	tallennukseen
+*	tallennukseen
 flutter 0.0.0
-•	sovelluksen toimimiseen
+*	sovelluksen toimimiseen
 
 Lähteenä käytetty repositorio: https://github.com/SamiaAshraff/WeatherCast
  
