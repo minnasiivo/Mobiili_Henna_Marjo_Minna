@@ -19,20 +19,25 @@ Lähteenä käytetty repositorio: https://github.com/SamiaAshraff/WeatherCast
 
 # Sovelluksen näkymät
 
-*Tähän kuvat/kuvaukset näkymistä, esim. etusivu, päiväkirjasivu jne.*
 
-Lähteenä käytetty: *Tähän linkit käytettyihin repositorioihin*
+etusivu
+*	sivu toimii esikatselutilana/etusivuna
+*	voi lisätä haetun paikan suosikkeihin
+*	kuvaus säästä ja lämpötila
+*	hakutoiminto
 
-
-etusivu:
 
 ![Alt text](pictures/aloitus.jpeg "Aloitus")
 
-kirjautuminen:
+kirjautuminen
+*	sovellukseen kirjautumiseen/rekisteröitymiseen
 
 ![Alt text](pictures/kirjaus.jpeg "Kirjaus")
 
-kamera:
+kamera
+*	ottaa kuvan
+*	tallentaa tietokantaan
+
 
 ![Alt text](pictures/kuva.jpeg "Kuva")
 
@@ -40,7 +45,7 @@ päiväkirja
 *	voi poistaa tallennettuja tietoja?
 *	avata kameran ja ottaa kuvan
 *	tallentaa haetut säätiedot
-*	pystyy poistamaan tietoja:
+*	pystyy poistamaan tietoja
 
 ![Alt text](pictures/pk.jpeg "Pk")
 
