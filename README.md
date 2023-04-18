@@ -21,16 +21,15 @@ Lähteenä käytetty repositorio: https://github.com/SamiaAshraff/WeatherCast
 
 
 Etusivu
-*	sivu toimii esikatselutilana/etusivuna
-*	haetun paikan lisääminen suosikkeihin
 *	kuvaus säästä ja lämpötila
 *	hakutoiminto
+*	haetun paikan lisääminen suosikkeihin
 
 
 ![Alt text](pictures/aloitus.jpeg "Aloitus")
 
 Kirjautuminen
-*	sovellukseen kirjautumiseen/rekisteröitymiseen
+*	sovellukseen rekisteröityminen ja kirjautuminen
 
 ![Alt text](pictures/kirjaus.jpeg "Kirjaus")
 
@@ -45,7 +44,6 @@ Päiväkirja
 *	tallennettujen tietojen poistaminen
 *	kamera ja kuvan ottaminen
 *	haettujen säätietojen tallennus
-*	tietojen poistaminen
 
 ![Alt text](pictures/pk.jpeg "Pk")
 
