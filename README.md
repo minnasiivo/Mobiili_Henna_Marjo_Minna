@@ -1,6 +1,6 @@
 # Sääsovellus
 
-Tämä on sääsovellus, joka hakee säätietoja halutun maan tai kaupungin mukaan. Sovellus käyttää säätietojen hakuun OpenWeatherMap API:n rajapintaa. Sovellus tuo haetun maan mukaan maakoodin. Tallennettaessa sovellus tallentaa lämpötilan ja kuvauksen säästä. Sään kuvausta havainnollistetaan iconilla. Hakutuloksen voi tallentaa päiväkirjaan sääkortiksi etusivun sydän iconista, johon on lisätty animaatio. Sääkorttiin pystyy lisätä kuvia. Tietojen tallennukseen on käytetty Firebasea.
+Tämä on sääsovellus, joka hakee säätietoja halutun kaupungin mukaan. Sovellus käyttää säätietojen hakuun OpenWeatherMap API:n rajapintaa. Sovellus tuo haetun maan mukana maakoodin. Tallennettaessa sovellus tallentaa lämpötilan ja kuvauksen säästä. Sään kuvausta havainnollistetaan ikonilla. Hakutuloksen voi tallentaa päiväkirjaan sääkortiksi etusivun sydän-ikonista, johon on lisätty animaatio. Sääkorttiin voi lisätä kuvan puhelimen kameraa käyttäen. Tietojen tallennukseen on käytetty Firebasea.
 
 Sovelluksessa käytetään puhelimen ominaisuuksista sijaintia (GPS) ja kameraa.
 
