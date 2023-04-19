@@ -7,10 +7,13 @@ Sovelluksessa käytetään puhelimen ominaisuuksista sijaintia (GPS) ja kameraa.
 Sovellukseen lisätty mm. seuraavat paketit (haettu komennolla Flutter pub deps):
 anim_search_bar 2.0.3
 *	sovelluksen hakupalkki
+
 camera 0.10.3+2
 *	sovelluksen kamera
+
 firebase_auth 4.4.0
 *	tallennukseen
+
 flutter 0.0.0
 *	sovelluksen toimimiseen
 
