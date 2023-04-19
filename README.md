@@ -5,7 +5,6 @@ Tämä on sääsovellus, joka hakee säätietoja halutun kaupungin mukaan. Sovel
 Sovelluksessa käytetään puhelimen ominaisuuksista sijaintia (GPS) ja kameraa.
 
 Sovellukseen lisätty mm. seuraavat paketit (haettu komennolla Flutter pub deps):
-
 anim_search_bar 2.0.3
 *	sovelluksen hakupalkki
 camera 0.10.3+2
