@@ -51,7 +51,8 @@ Etusivu
 *	hakutoiminto
 *	haetun paikan lisääminen suosikkeihin
 * animoitu iconi
-* kirjautuneen käyttäjän tiedot
+* kirjautuneen käyttäjän tiedot & uloskirjautuminen
+* painike päiväkirjan avaamiseen
 
 
 ![Alt text](pictures/aloitus.jpeg "Aloitus")
