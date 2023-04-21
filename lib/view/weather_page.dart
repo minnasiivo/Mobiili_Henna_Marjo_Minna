@@ -104,7 +104,8 @@ class _WeatherPageState extends State<WeatherPage> {
                           //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
                           rtl: true,
                           width: 400,
-                          color: const Color.fromARGB(255, 145, 85, 245), //255, 255, 181, 107
+                          color: const Color.fromARGB(
+                              255, 145, 85, 245), //255, 255, 181, 107
                           textController: textController,
                           suffixIcon: const Icon(
                             Icons.search,
@@ -131,7 +132,8 @@ class _WeatherPageState extends State<WeatherPage> {
                           children: [
                             CircleAvatar(
                               radius: 24,
-                              backgroundColor:const Color.fromARGB(255, 145, 85, 245),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 145, 85, 245),
                               child: IconButton(
                                 icon: const Icon(
                                   Icons.description,
@@ -201,7 +203,8 @@ class _WeatherPageState extends State<WeatherPage> {
                           //Hakupalkki näyttää paikkakuntalistan, kun alkaa kirjoittamaan?
                           rtl: true,
                           width: 400,
-                          color: const Color.fromARGB(255, 145, 85, 245), //255, 255, 181, 107
+                          color: const Color.fromARGB(
+                              255, 145, 85, 245), //255, 255, 181, 107
                           textController: textController,
                           suffixIcon: Icon(
                             Icons.search,
@@ -229,7 +232,8 @@ class _WeatherPageState extends State<WeatherPage> {
                           children: [
                             CircleAvatar(
                               radius: 24,
-                              backgroundColor: const Color.fromARGB(255, 145, 85, 245), //<-- SEE HERE
+                              backgroundColor: const Color.fromARGB(
+                                  255, 145, 85, 245), //<-- SEE HERE
                               child: IconButton(
                                 icon: const Icon(
                                   Icons.description,
@@ -315,38 +319,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                       Icons.favorite,
                                     ),
                                   ),
-
-/*
-                                  IconButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          isFavourite = !isFavourite;
-                                        });
-                                        if (isFavourite) {
-                                          listManager.add(
-                                            WeatherModel(
-                                                temp: data.temp,
-                                                city: data.city,
-                                                country: data.country,
-                                                desc: data.desc,
-                                                icon: data.icon,
-                                                date: DateTime.now()),
-                                            //  userid: FirebaseAuth.instance.currentUser!.uid.toString()
-                                          );
-
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  content: Text('Saved')));
-                                        }
-                                      },
-                                      icon: Icon(
-                                        Icons.favorite,
-                                        color: isFavourite
-                                            ? Color.fromARGB(255, 210, 10,
-                                                10) //255, 243, 144, 96
-                                            : Color.fromARGB(
-                                                255, 104, 104, 104),
-                                      )) //255, 114, 113, 113*/
                                 ],
                               ),
                               height25,

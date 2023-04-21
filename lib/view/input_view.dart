@@ -35,18 +35,10 @@ class InputViewState extends State<InputView> {
   int index = -1;
   String? imageName = "";
   String imageUrl = "";
-/*
-  Future<void> imageURLdownload() async {
-    imageUrl = 
-    //await storageRef.child(imageName!).getDownloadURL();
-    //imageUrl =
-    //  await storageRef.child('CAP7682421739371229962.jpg').getDownloadURL();
-  }*/
 
   @override
   void initState() {
     super.initState();
-    //imageURLdownload();
   }
 
   @override
@@ -143,11 +135,6 @@ class InputViewState extends State<InputView> {
                       Text(" " + country),
                     ],
                   ),
-                  //Text(temp),
-                  //Text(city),
-                  //Text(country),
-                  //Text(desc),
-                  //Text(icon),
                 ],
               ),
             ),
