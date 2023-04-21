@@ -1,4 +1,6 @@
-# Sääsovellus
+# Sääsovellus eli SÄÄPPI
+
+Tämän sovelluksen ovat tehneet Mobiilisovelluskehitys -kurssilla Marjo Jäkärä, Henna Pusa ja Minna Siivo
 
 Tämä on sääsovellus, joka hakee säätietoja halutun kaupungin mukaan. Sovellus käyttää säätietojen hakuun OpenWeatherMap API:n rajapintaa. 
 Kaupunki haetaan ensisijaisesti puhelimen GPS tiedon perusteella. Eri kaupunkien säätietoja voi etsiä myös hakupalkin avulla.
